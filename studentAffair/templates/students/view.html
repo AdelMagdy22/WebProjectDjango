@@ -8,11 +8,14 @@
   <title>View Page</title>
 {% endblock extra_head %}
 
-{% block content %}  
+{% block content %}
+
+
         <div class="head">View Page</div>
         <div class="content">
             <h2>All Active/InActive Students Information</h2>
             <div class="smallTap">
+                
                 <form>
                     <label>Choose Active/InActive:</label>
                     <select id="selectStatue">
@@ -32,15 +35,36 @@
                             <th>Gender</th>
                             <th>Date of Birth</th>
                             <th>Mobile Phone</th>
+                            <th>Email</th>
                             <th>Status</th>
                             <th>Departement</th>
                             <th>Change Status</th>
                         </thead>
     
                         <tbody id="TBody">
+                            {% for x in data %}
+                            <tr>    
+                                <td>{{x.fname}}</td>
+                                <td>{{x.lname}}</td>
+                                <td>{{x.id}}</td>
+                                <td>{{x.level}}</td>
+                                <td>{{x.gpa}}</td>
+                                <td>{{x.gender}}</td>
+                                <td>{{x.dob}}</td>
+                                <td>{{x.phonenumber}}</td>
+                                <td>{{x.email}}</td>
+                                <td>{{x.status}}</td>
+                                <td>{{x.departement}}</td>
+                                <td><button class="slBtn" id="delete">Change</button>
+                            </tr>
+                            {% endfor %}
                         </tbody>
     
                     </table>
+                    
                 </div>
+                
         </div>
+
+
 {% endblock content %}

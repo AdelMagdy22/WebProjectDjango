@@ -14,13 +14,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Add click event listener to the Add button
     EditButton.addEventListener('click', function () {
-
+        alert("edit button clicked");
         // Get the input field values
         const id = document.querySelector('#inputid').value;
         for(let i = 0 ; i < Students.length ; i++){
             if (id === Students[i].id) {
                 localStorage.setItem("Index",JSON.stringify(i));
-                location.href = "UpdateInfo.html";
+                location.href = "{% url 'updatehomepage' %} ";
                 return;
             }
         }

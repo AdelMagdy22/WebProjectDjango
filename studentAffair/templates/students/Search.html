@@ -4,7 +4,7 @@
 {% load static %}
   <link rel="stylesheet" href="{% static 'css/manPageStyle.css' %} "/>
   <script defer src="{% static 'js/mainpage.js' %}"></script>
-  <script defer src="{% static 'js/search.js'%} "></script>
+  <!-- <script defer src="{% static 'js/search.js'%} "></script> -->
   <title>Search Page</title>
 {% endblock extra_head %}
 
@@ -15,10 +15,10 @@
             <div>
                 <h1>
                     <span> Search Page</span>
-                    </span>
+
                 </h1>
             </div>
-            <br> <br>
+            <!-- <br> <br> -->
             <div class="smallTap">
                 <form>
 
@@ -36,7 +36,7 @@
 
                 </form>
             </div>
-            <br> <br>
+            <!-- <br> <br> -->
             <div class="part">
                 <table class="centertable">
                     <thead>
@@ -48,11 +48,27 @@
                         <th>Gender</th>
                         <th>Date of Birth</th>
                         <th>Mobile Phone</th>
+                        <th>Email</th>
                         <th>Status</th>
                         <th>Departement</th>
                         <th>Update</th>
                     </thead>
                     <tbody id="TBody">
+                        {% for x in data %}
+                            <tr>    
+                                <td>{{x.fname}} {{x.lname}}</td>
+                                <td>{{x.id}}</td>
+                                <td>{{x.level}}</td>
+                                <td>{{x.gpa}}</td>
+                                <td>{{x.gender}}</td>
+                                <td>{{x.dob}}</td>
+                                <td>{{x.phonenumber}}</td>
+                                <td>{{x.email}}</td>
+                                <td>{{x.status}}</td>
+                                <td>{{x.departement}}</td>
+                                <td><button class="slBtn" id="Update">Update</button></td>
+                            </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>

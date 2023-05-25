@@ -8,12 +8,6 @@ from django.shortcuts import render
 def home(request):
     return render(request,'pages/mainPage.html')
 
-def addStudent(request):
-    return render(request,'pages/addstudent.html')
-
-def delete(request):
-    return render(request,'pages/delete.html')
-
 def DepartmentAssignment(request):
     return render(request,'pages/DepartementAssignmentPage.html')
 
@@ -23,14 +17,9 @@ def login(request):
 def tutorial(request):
     return render(request,'pages/MyTutorialPage.html')
 
-def search(request):
-    return render(request,'pages/Search.html')
-
 def updatehomepage(request):
     return render(request,'pages/UpdateHomePage.html')
 
 def update(request):
     return render(request,'pages/UpdateInfo.html')
 
-def view(request):
-    return render(request,'pages/view.html')

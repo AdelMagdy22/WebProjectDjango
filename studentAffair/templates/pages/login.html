@@ -12,7 +12,8 @@
         <div class="content">
             <h1> Log in</h1>
             <div class="smallTap">
-                <form action="MyTutorial Page.html" method="POST">
+                <form action="{% url 'tutorial' %}" method="POST">
+                    {% csrf_token %}
                     <div>
                         <i class="fa fa-envelope"></i> <input placeholder=" Enter your E-mail..." type="email" id = "Email" required>
                         <br> <br>
