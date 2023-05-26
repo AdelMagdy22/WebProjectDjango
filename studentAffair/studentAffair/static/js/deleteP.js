@@ -31,10 +31,10 @@
 //     DisplayTable();
 // }
 
-function deleteSTU(i){
-    if (window.confirm("Are you sure you want to perform this Deletion?")) {
-        Students.splice(i,1);
-        localStorage.Students = JSON.stringify(Students);
-        location.reload();
-    }
-}
+// function deleteSTU(i){
+//     if (window.confirm("Are you sure you want to perform this Deletion?")) {
+//         Students.splice(i,1);
+//         localStorage.Students = JSON.stringify(Students);
+//         location.reload();
+//     }
+// }

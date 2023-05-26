@@ -1,0 +1,17 @@
+{% extends 'headbase.html' %}
+
+{% block extra_head %}
+{% load static %}
+  <link rel="stylesheet" href="{% static 'css/manPageStyle.css' %} "/>
+  <title>deleteConfirm</title>
+{% endblock extra_head %}
+{% block content %}
+  <div class="content">
+    <p>Are you sure you want delete the Student "{{student}}" </p>
+    <form action="{% url 'deleteConfirm' student.id %}" method="POST">
+        {% csrf_token %}
+        <a href="{% url 'delete' %}">Cancel</a>
+        <input type="submit" name="Confirm">
+    </form>
+  </div>
+{% endblock content %}

@@ -1,21 +1,21 @@
-let indx;
-if(localStorage.Index != null){
-    indx = JSON.parse(localStorage.Index);
-}
+// let indx;
+// if(localStorage.Index != null){
+//     indx = JSON.parse(localStorage.Index);
+// }
 
-let Student;
-//if there is a data in localStorage put it in students else create an empty array
-if (localStorage.Students != null) {
-    Student = JSON.parse(localStorage.Students);
-}
+// let Student;
+// //if there is a data in localStorage put it in students else create an empty array
+// if (localStorage.Students != null) {
+//     Student = JSON.parse(localStorage.Students);
+// }
 
 
 
 document.addEventListener('DOMContentLoaded', function () {
     const ID = document.querySelector("#ID");
-    ID.setAttribute("value", Student[indx].id);
+    // ID.setAttribute("value", Student[indx].id);
     const name = document.querySelector("#Name");
-    name.setAttribute("value", Student[indx].firstName + " " + Student[indx].lastName);
+    // name.setAttribute("value", Student[indx].firstName + " " + Student[indx].lastName);
     //an akward error happed
     // const Lselect = document.getElementById("select");
     // for (let index = 1; Lselect.options.length; index++) {
@@ -24,28 +24,28 @@ document.addEventListener('DOMContentLoaded', function () {
     //     }        
     // }
     const depBtn = document.querySelector("#btnDep");
-    const Lselect = document.getElementById("select");
+    const Lselect = document.getElementById("Departement");
     depBtn.addEventListener('click', function(){
-        if (Lselect.value == "Departement") {
+        if (Lselect.value != "NULL" && Lselect.value != "CS" && Lselect.value != "AI" && Lselect.value != "DS" && Lselect.value != "IS" && Lselect.value != "IT" ) {
             alert("Department can not be null");
         }else{
-        let aStudent ={
-            id: Student[indx].id,
-            firstName : Student[indx].firstName,
-            lastName : Student[indx].lastName,
-            phone : Student[indx].phone,
-            email : Student[indx].email,
-            level : Student[indx].level,
-            gpa : Student[indx].gpa,
-            dob : Student[indx].dob,
-            gender : Student[indx].gender,
-            department : Lselect.value,
-            status : Student[indx].status,
-        } 
-        Student[indx] = aStudent;
-            localStorage.setItem("Students",JSON.stringify(Student));
+        // let aStudent ={
+        //     id: Student[indx].id,
+        //     firstName : Student[indx].firstName,
+        //     lastName : Student[indx].lastName,
+        //     phone : Student[indx].phone,
+        //     email : Student[indx].email,
+        //     level : Student[indx].level,
+        //     gpa : Student[indx].gpa,
+        //     dob : Student[indx].dob,
+        //     gender : Student[indx].gender,
+        //     department : Lselect.value,
+        //     status : Student[indx].status,
+        // } 
+        // Student[indx] = aStudent;
+        //     localStorage.setItem("Students",JSON.stringify(Student));
             alert("Department Updated Successfully");
-            location.href = "view.html";
+            // location.href = "view.html";
     }
     });
 });

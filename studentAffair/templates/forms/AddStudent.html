@@ -3,8 +3,7 @@
 {% block extra_head %}
 {% load static %}
   <link rel="stylesheet" href="{% static 'css/manPageStyle.css' %} "/>
-  <script defer src="{% static 'js/mainpage.js'%} "></script>
-  <!-- <script defer src="{% static 'js/Add.js' %} "></script> -->
+  <script defer src="{% static 'js/Add.js' %} "></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <title>Add Student Page</title>
 {% endblock extra_head %}
@@ -16,19 +15,19 @@
             <br>
             <h1>Add Student:</h1>
             <div class="marginedited">
-                <form method="POST">
+                <form action="" method="POST">
                     {% csrf_token %}
                     <fieldset>
                     <legend>Details For Each Student</legend>
-                    <p> <strong>Student ID:</strong> <input type = "text" name = "ID" placeholder="Enter ID"/></p>
+                    <p> <strong>Student ID:</strong> <input type = "text" id = "ID" name = "ID" placeholder="Enter ID" /></p>
                     <p id="VID"></p><br> 
-                    <p> <strong>First name:</strong> <input type = "text"  name = "fname" placeholder="Enter First name"/></p>
+                    <p> <strong>First name:</strong> <input type = "text" id ="fname" name = "fname" placeholder="Enter First name"/></p>
                     <p id="VFN"></p><br>
-                    <p> <strong>Last name:</strong> <input type = "text" name = "lname" placeholder="Enter Last name"/></p>  
+                    <p> <strong>Last name:</strong> <input type = "text" id ="lname" name = "lname" placeholder="Enter Last name"/></p>  
                     <p id="VLN"></p><br>
-                    <p> <strong>Phone Number:</strong> <input type = "text" name = "phone" placeholder="Enter Phone Number"/></p>
+                    <p> <strong>Phone Number:</strong> <input type = "text" id ="phone" name = "phone" placeholder="Enter Phone Number"/></p>
                     <p id="PHN"></p><br>
-                    <p><i class="fa-solid fa-envelope"></i> <input type = "email" name = "email" placeholder="Enter Email" /></p> 
+                    <p><i class="fa-solid fa-envelope"></i> <input type = "email" id ="email" name = "email" placeholder="Enter Email" /></p> 
                     <p id="VEML"></p><br>
                     <p>
                         <strong>Level:</strong>
@@ -37,23 +36,24 @@
                         <input type="radio" name ="Level" value="3" id="LLL">Level 3
                         <input type="radio" name ="Level" value="4" id="LLLL">Level 4
                     </p><br>
-                    <p> <strong>GPA:</strong>  <input type = "text"  name = "GPA" placeholder="Enter GPA"/></p>
+                    <p> <strong>GPA:</strong>  <input type = "text" id = "GPA" name = "GPA" placeholder="Enter GPA"/></p>
                     <p id="VGPA"></p><br>
-                    <p> <strong>Date of birth:</strong> <input type = "date" name = "date"  /></p>
+                    <p> <strong>Date of birth:</strong> <input type = "date" id = "date" name = "date"  /></p>
                     <p id="VDOB"></p><br>     
                     <p>
                         <strong>Gender:</strong>
                         <input type = "radio" name = "Gender" value = "Male"> Male    
                         <input type = "radio" name = "Gender" value = "Female"> Female
                     </p> <br>
-                    <p id="Departement"> 
+                    <p id = "Departement">Departement:
+                    <select name="Departement" required="false"> 
                         <strong>Department:</strong> 
-                        <input type="radio" name ="Departement" value="CS">CS
-                        <input type="radio" name ="Departement" value="AI">AI
-                        <input type="radio" name ="Departement" value="IT">IT
-                        <input type="radio" name ="Departement" value="DS">DS
-                        <input type="radio" name ="Departement" value="IS">IS
-                    </p><br>
+                        <option type="radio" value="CS">CS</option>
+                        <option type="radio" value="AI">AI</option>
+                        <option type="radio" value="IT">IT</option>
+                        <option type="radio" value="DS">DS</option>
+                        <option type="radio" value="IS">IS</option>
+                    </select></p><br>
                     <p> 
                         <strong>Status:</strong>
                         <input type = "radio" name = "Status" value = "Active"> Active    

@@ -1,0 +1,54 @@
+{% extends 'headbase.html' %}
+
+{% block extra_head %}
+{% load static %}
+  <link rel="stylesheet" href="{% static 'css/manPageStyle.css' %} "/>
+  <script defer src="{% static 'js/mainpage.js' %}"></script>
+  <script defer src="{% static 'js/UpdateInfo.js'%} "></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Update Page</title>
+{% endblock extra_head %}
+
+{% block content %}       
+        <div class="head">Update Home Page</div>
+    <div class="content">
+            <br>
+            <h1>
+                FCAI-Student-Update :
+            </h1>
+            <div class="marginedited">
+                <form action="{% url 'update' form.id %}" method="POST">
+                    {% csrf_token %}
+                        <fieldset>
+                            <legend>Student Information:</legend>
+                            <p style="text-align: left;">ID: {{form.id}}</p>
+                            <br>
+                            <p>First name: <input type="text" id="editName" id = "editName" name="fname" value="{{form.fname}}"/></p>
+                            <p id="VFN"></p><br>
+                            <p>Last name: <input type="text" id="editLN" id="editLN" name="lname" value="{{form.lname}}"/></p>
+                            <p id="VLN"></p><br>
+                            <p>Phone Number: <input type="text" id="editPHN" id="editPHN" name="phone" value="{{form.phonenumber}}"/></p>
+                            <p id="PHN"></p><br>
+                            <p><i class="fa-solid fa-envelope"></i> <input type="text" id="editEmail" name="email" value="{{form.email}}"/></p>
+                            <p id="VEML"></p><br>
+                            <p>Level:
+                                <select name="Level">
+                                    <option value="{{form.level}}">Level {{form.level}}</option>
+                                    <option id="a" value="1">level 1 </option>
+                                    <option id="b" value="2">level 2 </option>
+                                    <option id="c" value="3">level 3 </option>
+                                    <option id="d" value="4">level 4 </option>
+                                </select>
+                            </p><br>
+                            <p> GPA: <input type="text" name="GPA" id="editGPA" value="{{form.gpa}}"/></p>
+                            <p id="VGPA"></p><br>
+                            <p> Date of birth: <input type ="datetime" name="date" id="editDOB" value ="{{form.dob}}" /></p>
+                            <p id="VDOB"></p>  <br>
+                            <button class="slBtn" value="submit" id="updateBtn">Update</button>
+                        </fieldset>
+                    </form>
+            </div>
+            
+</div>
+</body>
+{% endblock content %}

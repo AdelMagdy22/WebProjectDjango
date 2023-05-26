@@ -1,48 +1,4 @@
-let Students;
-//if there is a data in localStorage put it in students else create an empty array
-if (localStorage.Students != null) {
-    Students = JSON.parse(localStorage.Students);
-}else{
-    Students = []; 
-}
-
-
-
-// toggle_btn.onclick = function() {
-//     nav.classList.toggle('hide');
-//     smallTap.classList.toggle('expand');
-//     // content.classList.toggle('expand');
-//     // divcon.classList.toggle('expand');
-// };
-
-// Wait for the document to load before attaching event listeners
 document.addEventListener('DOMContentLoaded', function () {
-
-    function DisplayTable(){
-    let table = '';
-    for(let i = 0 ; i < Students.length ; i++){
-        table += `
-        <tr>
-            <td>${Students[i].firstName}</td>
-            <td>${Students[i].lastName}</td>
-            <td>${Students[i].id}</td>
-            <td>${Students[i].level}</td>
-            <td>${Students[i].gpa}</td>
-            <td>${Students[i].gender}</td>
-            <td>${Students[i].dob}</td>
-            <td>${Students[i].phone}</td>
-            <td>${Students[i].status}</td>
-            <td>${Students[i].department}</td>
-            <td><button class="slBtn" id="delete" onclick="ChangeSTD(${i})">Change</button></td>
-        </tr>
-        `
-    }
-    document.getElementById('TBody').innerHTML = table;
-}
-
-DisplayTable();
-
-
     // Select the drop-down element
     var selectStatue = document.querySelector('#selectStatue');
 
@@ -82,33 +38,3 @@ DisplayTable();
         }
     });
 });
-
-
-function ChangeSTD(i){
-    if (window.confirm("Are you sure you want to change the status of that student?")) {
-        let newStatus ;
-        if (Students[i].status === "active") {
-            newStatus = "inactive";
-        }else{
-            newStatus = "active";
-        }
-        let aStudent ={
-            id: Students[i].id,
-            firstName : Students[i].firstName,
-            lastName : Students[i].lastName,
-            phone : Students[i].phone,
-            email : Students[i].email,
-            level : Students[i].level,
-            gpa : Students[i].gpa,
-            dob : Students[i].dob,
-            gender : Students[i].gender,
-            department : Students[i].department,
-            status : newStatus,
-        } 
-        Students[i] = aStudent;
-        localStorage.setItem("Students",JSON.stringify(Students));
-        alert("Status Updated Successfully");
-        location.reload();
-    }
-}
-

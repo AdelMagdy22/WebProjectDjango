@@ -1,12 +1,12 @@
-let students;
-if (localStorage.Students != null){
-    students = JSON.parse(localStorage.Students);
-}
+// let students;
+// if (localStorage.Students != null){
+//     students = JSON.parse(localStorage.Students);
+// }
 
-let indx;
-if(localStorage.Index != null){
-    indx = JSON.parse(localStorage.Index);
-}
+// let indx;
+// if(localStorage.Index != null){
+//     indx = JSON.parse(localStorage.Index);
+// }
 
 function validateChars(str) {
     if(str.length == 0){
@@ -107,9 +107,9 @@ function validateDateOfBirth(date) {
 
 document.addEventListener('DOMContentLoaded', function () {
     const ID = document.querySelector("#ID");
-    ID.setAttribute("value", students[indx].id);
+    // ID.setAttribute("value", students[indx].id);
     const EditName = document.querySelector('#editName');
-    EditName.setAttribute("value",students[indx].firstName);
+    // EditName.setAttribute("value",students[indx].firstName);
     const errorMessageFN = document.getElementById('VFN');
     EditName.addEventListener('blur', () => {
         const inputValue = EditName.value;
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
     const EditLN = document.querySelector('#editLN');
-    EditLN.setAttribute("value",students[indx].lastName);
+    // EditLN.setAttribute("value",students[indx].lastName);
     const errorMessageln = document.getElementById('VLN');
     EditLN.addEventListener('blur', () => {
         const inputValue = EditLN.value;
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
     const EditPHN = document.querySelector('#editPHN');
-    EditPHN.setAttribute("value",students[indx].phone);
+    // EditPHN.setAttribute("value",students[indx].phone);
     const errorMessagePHN = document.getElementById('PHN');
     EditPHN.addEventListener('blur', () => {
         const inputValue = EditPHN.value;
@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
     const EditEmail = document.querySelector('#editEmail');
-    EditEmail.setAttribute("value",students[indx].email);
+    // EditEmail.setAttribute("value",students[indx].email);
     const errorMessageEml = document.getElementById('VEML');
     EditEmail.addEventListener('blur', () => {
         const inputValue = EditEmail.value;
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
     const EditDOB = document.querySelector('#editDOB');
-    EditDOB.setAttribute("value",students[indx].dob);
+    // EditDOB.setAttribute("value",students[indx].dob);
     const errorMessageDOB = document.getElementById('VDOB');
     EditDOB.addEventListener('blur', () => {
         const inputValue = EditDOB.value;
@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
     const EditGPA = document.querySelector('#editGPA');
-    EditGPA.setAttribute("value",students[indx].gpa);
+    // EditGPA.setAttribute("value",students[indx].gpa);
     const errorMessageGPA = document.getElementById('VGPA');
     EditGPA.addEventListener('blur', () => {
         const inputValue = EditGPA.value;
@@ -174,48 +174,48 @@ document.addEventListener('DOMContentLoaded', function () {
             errorMessageGPA.textContent = '';
         }
     });
-    let ch = students[indx].level;
-    const ch1 = document.getElementById("a");
-    const ch2 = document.getElementById("b");
-    const ch3 = document.getElementById("c");
-    const ch4 = document.getElementById("d");
-    if (ch == "1") {
-        ch1.setAttribute("selected","");
-    }else if(ch == "2"){
-        ch2.setAttribute("selected","");
-    }else if(ch == "3"){
-        ch3.setAttribute("selected","");
-    }else if(ch == "4"){
-        ch4.setAttribute("selected" ,"");
-    }
-    let status = students[indx].status;
-    const Editstatusact = document.getElementById("act");
-    const Editstatusinact = document.getElementById("inact");
-    if (status == "active" ) {
-        Editstatusact.setAttribute("checked","");
-    }else{
-        Editstatusinact.setAttribute("checked","");
-    }
+    // let ch = students[indx].level;
+    // const ch1 = document.getElementById("a");
+    // const ch2 = document.getElementById("b");
+    // const ch3 = document.getElementById("c");
+    // const ch4 = document.getElementById("d");
+    // if (ch == "1") {
+    //     ch1.setAttribute("selected","");
+    // }else if(ch == "2"){
+    //     ch2.setAttribute("selected","");
+    // }else if(ch == "3"){
+    //     ch3.setAttribute("selected","");
+    // }else if(ch == "4"){
+    //     ch4.setAttribute("selected" ,"");
+    // }
+    // let status = students[indx].status;
+    // const Editstatusact = document.getElementById("act");
+    // const Editstatusinact = document.getElementById("inact");
+    // if (status == "active" ) {
+    //     Editstatusact.setAttribute("checked","");
+    // }else{
+    //     Editstatusinact.setAttribute("checked","");
+    // }
     const updateButton = document.querySelector('#updateBtn');
     // Add click event listener to the Add button
     updateButton.addEventListener('click', function () {
         if(validateEmail(EditEmail.value) && validateGPA(EditGPA.value) && validateEgyptianNumber(EditPHN.value) 
-        && validateDateOfBirth(EditDOB.value) && validateChars(EditLN.value) && validateChars(EditName.value)){
-            let Student ={
-                id: students[indx].id,
-                firstName : EditName.value,
-                lastName : EditLN.value,
-                phone : EditPHN.value,
-                email : EditEmail.value,
-                level : document.querySelector('option[name="Level"]:checked').value,
-                gpa : EditGPA.value,
-                dob : EditDOB.value,
-                gender : students[indx].gender,
-                department : students[indx].department,
-                status : document.querySelector('input[name="Status"]:checked').value,
-            }
-            students[indx] = Student;
-            localStorage.setItem("Students",JSON.stringify(students));
+        && validateChars(EditLN.value) && validateChars(EditName.value)){
+            // let Student ={
+            //     id: students[indx].id,
+            //     firstName : EditName.value,
+            //     lastName : EditLN.value,
+            //     phone : EditPHN.value,
+            //     email : EditEmail.value,
+            //     level : document.querySelector('option[name="Level"]:checked').value,
+            //     gpa : EditGPA.value,
+            //     dob : EditDOB.value,
+            //     gender : students[indx].gender,
+            //     department : students[indx].department,
+            //     status : document.querySelector('input[name="Status"]:checked').value,
+            // }
+            // students[indx] = Student;
+            // localStorage.setItem("Students",JSON.stringify(students));
             alert("Updated Successfully");
         }else{
             alert("Invalid Feilds");

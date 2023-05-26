@@ -3,8 +3,6 @@
 {% block extra_head %}
 {% load static %}
   <link rel="stylesheet" href="{% static 'css/manPageStyle.css' %} "/>
-  <script defer src="{% static 'js/mainpage.js' %}"></script>
-  <!-- <script defer src="{% static 'js/search.js'%} "></script> -->
   <title>Search Page</title>
 {% endblock extra_head %}
 
@@ -12,16 +10,23 @@
         <div class="head">Search Page</div>
         <div class="content">
             <br>
-            <div>
-                <h1>
-                    <span> Search Page</span>
+            <hr>
 
-                </h1>
+            <div class="container pb-5">
+            <div class="row">
+                <div class="col-sm">
+                <form class="form-inline my-2 my-lg-0" method="GET">
+                {{searchFilter.form}}
+                <button class="slbtn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+                </div>
+                
             </div>
-            <!-- <br> <br> -->
-            <div class="smallTap">
-                <form>
+            </div>
 
+            <hr>
+            <!-- <div class="smallTap">
+                <form action="{% url 'search' %}", method="GET">
                     <input type="search" placeholder="Search" aria-label="Search" id = "Search">
                     <label>By:</label>
                     <select id="select">
@@ -33,10 +38,8 @@
                         <option name = "type" type = "select" value="Departement">Departement</option>
                     </select>
                     <button class="slBtn" type="submit" id="submit">Search</button>
-
-                </form>
+                </form> -->
             </div>
-            <!-- <br> <br> -->
             <div class="part">
                 <table class="centertable">
                     <thead>
@@ -48,25 +51,23 @@
                         <th>Gender</th>
                         <th>Date of Birth</th>
                         <th>Mobile Phone</th>
-                        <th>Email</th>
                         <th>Status</th>
                         <th>Departement</th>
-                        <th>Update</th>
+                        <th>Update Departement</th>
                     </thead>
                     <tbody id="TBody">
-                        {% for x in data %}
+                        {% for student in students %}
                             <tr>    
-                                <td>{{x.fname}} {{x.lname}}</td>
-                                <td>{{x.id}}</td>
-                                <td>{{x.level}}</td>
-                                <td>{{x.gpa}}</td>
-                                <td>{{x.gender}}</td>
-                                <td>{{x.dob}}</td>
-                                <td>{{x.phonenumber}}</td>
-                                <td>{{x.email}}</td>
-                                <td>{{x.status}}</td>
-                                <td>{{x.departement}}</td>
-                                <td><button class="slBtn" id="Update">Update</button></td>
+                                <td>{{student.fname}} {{student.lname}}</td>
+                                <td>{{student.id}}</td>
+                                <td>{{student.level}}</td>
+                                <td>{{student.gpa}}</td>
+                                <td>{{student.gender}}</td>
+                                <td>{{student.dob}}</td>
+                                <td>{{student.phonenumber}}</td>
+                                <td>{{student.status}}</td>
+                                <td>{{student.departement}}</td>
+                                <td><a href="{% url 'Departement' student.id %}"><button class="slBtn" id="Update" >Update</button></a></td>
                             </tr>
                         {% endfor %}
                     </tbody>

@@ -1,19 +1,19 @@
-let Students;
-//if there is a data in localStorage put it in students else create an empty array
-if (localStorage.Students != null) {
-    Students = JSON.parse(localStorage.Students);
-}else{
-    Students = []; 
-}
+// let Students;
+// //if there is a data in localStorage put it in students else create an empty array
+// if (localStorage.Students != null) {
+//     Students = JSON.parse(localStorage.Students);
+// }else{
+//     Students = []; 
+// }
 
-function IsthatidExist(id){
-    for(let i = 0 ; i < Students.length ; i++){
-        if (id === Students[i].id) {
-            return true;
-        }
-    }
-    return false;
-}
+// function IsthatidExist(id){
+//     for(let i = 0 ; i < Students.length ; i++){
+//         if (id === Students[i].id) {
+//             return true;
+//         }
+//     }
+//     return false;
+// }
 
 function validateNumbersOnly(str) {
     // Loop through every character in the string and check if it is a digit
@@ -229,23 +229,23 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
         if (validateEmail(email) && validateGPA(gpa) && validateEgyptianNumber(phone) && validateDateOfBirth(dob)
-        && validateChars(lastName) && validateChars(firstName) && validateNumbersOnly(id) && !IsthatidExist(id)) {
-            //create object an assign the values to it.
-            let Student ={
-                id: id,
-                firstName : firstName,
-                lastName : lastName,
-                phone : phone,
-                email : email,
-                level : level,
-                gpa : gpa,
-                dob : dob,
-                gender : gender,
-                department : departmentValue,
-                status : status,
-            }
-            Students.push(Student);
-            localStorage.setItem("Students",JSON.stringify(Students));
+        && validateChars(lastName) && validateChars(firstName) && validateNumbersOnly(id)) {
+            // //create object an assign the values to it.
+            // let Student ={
+            //     id: id,
+            //     firstName : firstName,
+            //     lastName : lastName,
+            //     phone : phone,
+            //     email : email,
+            //     level : level,
+            //     gpa : gpa,
+            //     dob : dob,
+            //     gender : gender,
+            //     department : departmentValue,
+            //     status : status,
+            // }
+            // Students.push(Student);
+            // localStorage.setItem("Students",JSON.stringify(Students));
             alert("Student added");
             location.reload();
         }else{

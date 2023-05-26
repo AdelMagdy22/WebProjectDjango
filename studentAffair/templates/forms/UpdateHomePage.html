@@ -3,27 +3,16 @@
 {% block extra_head %}
 {% load static %}
   <link rel="stylesheet" href="{% static 'css/manPageStyle.css' %} "/>
-  <script defer src="{% static 'js/view.js'%} "></script>
-  <title>View Page</title>
+  <script defer src="{% static 'js/mainpage.js' %}"></script>
+  <!-- <script defer src="{% static 'js/udpateHome.js'%} "></script> -->
+  <title>Update Home Page</title>
 {% endblock extra_head %}
 
-{% block content %}
-
-
-        <div class="head">View Page</div>
+{% block content %} 
+      
+        <div class="head">Update Home Page</div>
         <div class="content">
-            <h2>All Active/InActive Students Information</h2>
-            <div class="smallTap">
-                <form>
-                    <label>Choose Active/InActive:</label>
-                    <select id="selectStatue">
-                        <option name="type" type="selectStatue" value="All Students">All Students</option>
-                        <option name="type" type="select" value="Active">Active Students</option>
-                        <option name="type" type="select" value="InActive">InActive Students</option>
-                    </select>
-                </form>
-                <div class="smallTap">
-                    
+                
                     <table>
                         <thead>
                             <th>First Name</th>
@@ -36,8 +25,9 @@
                             <th>Mobile Phone</th>
                             <th>Status</th>
                             <th>Departement</th>
-                            <th>Change Status</th>
+                            <th>Update Information</th>
                         </thead>
+    
                         <tbody id="TBody">
                             {% for student in students %}
                             <tr>    
@@ -51,19 +41,15 @@
                                 <td>{{student.phonenumber}}</td>
                                 <td>{{student.status}}</td>
                                 <td>{{student.departement}}</td>
-                                <td>
-                                    <a href="{% url 'viewConfirm' student.id %}"><button class="slBtn" type="submit">Change</button></a>
-                                </td>
-            
+                                <td><a href="{% url 'update' student.id %}"><button class="slBtn" id="UpdateInfo">Update</button></a>
                             </tr>
                             {% endfor %}
                         </tbody>
     
                     </table>
                     
-                </div>
+                
                 
         </div>
-
-
+</body>
 {% endblock content %}
