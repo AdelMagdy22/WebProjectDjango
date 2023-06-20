@@ -1,19 +1,3 @@
-// let Students;
-// //if there is a data in localStorage put it in students else create an empty array
-// if (localStorage.Students != null) {
-//     Students = JSON.parse(localStorage.Students);
-// }else{
-//     Students = []; 
-// }
-
-// function IsthatidExist(id){
-//     for(let i = 0 ; i < Students.length ; i++){
-//         if (id === Students[i].id) {
-//             return true;
-//         }
-//     }
-//     return false;
-// }
 
 function validateNumbersOnly(str) {
     // Loop through every character in the string and check if it is a digit
@@ -107,6 +91,21 @@ function validateDateOfBirth(date) {
     }
     return true;
 }
+
+async function checkID(id){
+    const response = await fetch(`http://127.0.0.1:8000/studentAPI/studentCheck/${id}/`).catch(err => { throw err; });
+    if (response.status === 201){
+        console.log('true')
+        return true
+    }
+        
+    else{
+        console.log('false')
+        return false
+    }
+}
+
+
 
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function () {
@@ -204,7 +203,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // Get the Add button element
     const addButton = document.querySelector('#btnAdd');
     // Add click event listener to the Add button
-    addButton.addEventListener('click', function () {
+    addButton.addEventListener('click', async function (e) {
+        e.preventDefault()
         // Get the input field values
         const id = document.querySelector('#ID').value;
         const firstName = document.querySelector('#fname').value;
@@ -221,7 +221,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }else{
             departmentValue = "NULL";
         }
-        console.log(department);
         const status = document.querySelector('input[name="Status"]:checked').value;
         // Validate the input fields
         if (id === '' || firstName === '' || lastName === '' || phone === '' || email === '' || level === '' || gpa === '' || dob === '' || gender === '' || status === '') {
@@ -229,25 +228,10 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
         if (validateEmail(email) && validateGPA(gpa) && validateEgyptianNumber(phone) && validateDateOfBirth(dob)
-        && validateChars(lastName) && validateChars(firstName) && validateNumbersOnly(id)) {
-            // //create object an assign the values to it.
-            // let Student ={
-            //     id: id,
-            //     firstName : firstName,
-            //     lastName : lastName,
-            //     phone : phone,
-            //     email : email,
-            //     level : level,
-            //     gpa : gpa,
-            //     dob : dob,
-            //     gender : gender,
-            //     department : departmentValue,
-            //     status : status,
-            // }
-            // Students.push(Student);
-            // localStorage.setItem("Students",JSON.stringify(Students));
+        && validateChars(lastName) && validateChars(firstName) && validateNumbersOnly(id) && await checkID(id)) {
+            const form = document.getElementById('form')
+            form.submit()
             alert("Student added");
-            location.reload();
         }else{
             alert("Invalid Feilds");
         }

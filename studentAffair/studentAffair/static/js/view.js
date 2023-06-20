@@ -1,4 +1,43 @@
+const csrftoken = getCookie('csrftoken');
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+
+const statueButtons = document.getElementsByClassName('statue')
+for (let i = 0; i < statueButtons.length; i++) {    
+    statueButtons[i].addEventListener('click', function(){
+        if (confirm("Are you sure you want to Change statue of this student with id: "+statueButtons[i].getAttribute('id')))
+        {
+            fetch(`http://127.0.0.1:8000/studentAPI/statueStudent/${statueButtons[i].getAttribute('id')}/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken
+                },
+            }).then(function(){
+                location.reload();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function () {
+    
     // Select the drop-down element
     var selectStatue = document.querySelector('#selectStatue');
 

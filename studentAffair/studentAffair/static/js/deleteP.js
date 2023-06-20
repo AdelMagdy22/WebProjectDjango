@@ -1,40 +1,37 @@
-// let Students;
-// //if there is a data in localStorage put it in students else create an empty array
-// if (localStorage.Students != null) {
-//     Students = JSON.parse(localStorage.Students);
-// }else{
-//     Students = []; 
-// }
+const csrftoken = getCookie('csrftoken');
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
 
-// window.onload = function () {
-//     function DisplayTable(){
-//         let table = '';
-//         for(let i = 0 ; i < Students.length ; i++){
-//             table += `
-//             <tr>
-//                 <td>${Students[i].firstName}</td>
-//                 <td>${Students[i].lastName}</td>
-//                 <td>${Students[i].id}</td>
-//                 <td>${Students[i].level}</td>
-//                 <td>${Students[i].gpa}</td>
-//                 <td>${Students[i].gender}</td>
-//                 <td>${Students[i].dob}</td>
-//                 <td>${Students[i].phone}</td>
-//                 <td>${Students[i].status}</td>
-//                 <td>${Students[i].department}</td>
-//                 <td><button class="slBtn" id="delete" onclick="deleteSTU(${i})">Delete</button></td> 
-//             </tr>
-//             `
-//         }
-//         document.getElementById('TBody').innerHTML = table;
-//     }
-//     DisplayTable();
-// }
 
-// function deleteSTU(i){
-//     if (window.confirm("Are you sure you want to perform this Deletion?")) {
-//         Students.splice(i,1);
-//         localStorage.Students = JSON.stringify(Students);
-//         location.reload();
-//     }
-// }
+const delButtons = document.getElementsByClassName('del')
+for (let i = 0; i < delButtons.length; i++) {    
+    delButtons[i].addEventListener('click', function(){
+        if (confirm("Are you sure you want to delete this student with id: "+delButtons[i].getAttribute('id')))
+        {
+            fetch(`http://127.0.0.1:8000/studentAPI/delStudent/${delButtons[i].getAttribute('id')}/`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken
+                  },
+              }).then(function(){
+                location.reload();
+              })
+              .catch(error => {
+                console.error('Error:', error);
+              });
+        }
+    });
+}

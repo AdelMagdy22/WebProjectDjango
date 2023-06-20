@@ -2,7 +2,7 @@
 
 {% block extra_head %}
 {% load static %}
-  <link rel="stylesheet" href="{% static 'js/deleteP.js' %} "/>
+  <script defer src="{% static 'js/deleteP.js' %} "></script>
   <title>Delete Page</title>
 {% endblock extra_head %}
 
@@ -45,7 +45,7 @@
               <td>{{student.status}}</td>
               <td>{{student.departement}}</td>
               <td>
-                  <a href="{% url 'deleteConfirm' student.id %}"><button class="slBtn" id="delete" >Delete</button></a>
+                  <button class="slBtn del" id="{{student.id}}">Delete</button>
               </td>
             </tr>
           {% endfor %}
